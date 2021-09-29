@@ -1,8 +1,20 @@
 namespace Aggregation
 {
-    //TODO: Define public class "SpecialDeposit" that inherits from "Deposit".
-    
-    //TODO: Define constructor that calls constructor of a base class.
-    
-    //TODO: Override method "Income" of base class according to the task. 
+    public class SpecialDeposit : Deposit
+    {
+        public SpecialDeposit(decimal amount, int period) : base(amount, period)
+        {
+
+        }
+
+        public override decimal Income()
+        {
+            decimal result = Amount;
+            for (int i = 0; i < Period; i++)
+            {
+                result += ((i + 1) * 0.01m * result);
+            }
+            return (result - Amount);
+        }
+    }
 }
