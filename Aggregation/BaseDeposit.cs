@@ -1,8 +1,22 @@
+using System;
+
 namespace Aggregation
 {
-    //TODO: Define public class "BaseDeposit" that inherits from "Deposit".
-    
-    //TODO: Define constructor that calls constructor of a base class.
-    
-    //TODO: Override method "Income" of base class according to the task. 
+    public class BaseDeposit : Deposit
+    {
+        public BaseDeposit(decimal amount, int period) : base(amount, period)
+        {
+
+        }
+
+        public override decimal Income()
+        {
+            decimal result = Amount;
+            for (int i = 0; i < Period; i++)
+            {
+                result += 0.05m * result;
+            }
+            return Math.Round(result - Amount, 2);
+        }
+    }
 }
